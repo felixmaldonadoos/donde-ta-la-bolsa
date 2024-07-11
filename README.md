@@ -11,10 +11,10 @@ Built for win11 but can work for other systems (just rebuild for that target).
 pip install -r requirements.txt
 ```
 
-2. Build using `pyinstaller`
+2. Build for windows using `.bat`
 
 ```
-pyinstaller --onefile --hidden-import=fitz --hidden-import=pymupdf --hidden-import=tabulate --hidden-import=argparse --hidden-import=os main.py
+.\build.bat
 ```
 
 3. Run from command prompt
