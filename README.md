@@ -1,8 +1,6 @@
 # donde-ta-la-bolsa
 DondeTaLaBolsa: Basic tool to report bags not available from BrainHi pdf report.
 
-I just made this for my dad, nothing serious. 
-
 ## Build
 
 Built for win11 but can work for other systems (just rebuild for that target). 
