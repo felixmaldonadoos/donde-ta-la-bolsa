@@ -75,7 +75,10 @@ class BolsaChecker(QWidget):
         
         if self.display_check.isChecked():
             result_str = "Bolsas encontradas y sus cantidades:\n"
-            result_str += "\n".join([f"Bolsa {k}: {v} veces" for k, v in occurrences_dict.items()])
+            result_str += "\n".join([f"{'Bolsa':<10} {'Cantidad':<10}"])
+            result_str += "\n" + "-" * 25 + "\n"
+            for k, v in occurrences_dict.items():
+                result_str += f"{k:<10} {v:<10}\n"
         else:
             result_str = ""
         
@@ -95,36 +98,6 @@ class BolsaChecker(QWidget):
                     result_str += "\n\nERROR! No se pudo guardar el archivo."
         
         self.result_text.setText(result_str)
-    
-    def read_pdf_line_by_line(self, pdf_path):
-        pdf_document = fitz.open(pdf_path)
-        num_list = []
-        for page in pdf_document:
-            lines = page.get_text("text").splitlines()
-            for line in lines:
-                try:
-                    num_list.append(int(line))
-                except ValueError:
-                    pass
-        return num_list
-    
-    def vals_missing_from_list(self, number_list, N):
-        number_list = list(set(number_list))  # remove duplicates
-        full_set = set(range(100, N + 1))
-        given_set = set(number_list)
-        return sorted(full_set - given_set)
-    
-    def count_occurrences(self, number_list):
-        occurrence_dict = {}
-        for number in number_list:
-            str_number = str(number)
-            occurrence_dict[str_number] = occurrence_dict.get(str_number, 0) + 1
-        return occurrence_dict
-    
-    def check_and_ask_overwrite(self, filepath):
-        if os.path.exists(filepath):
-            return True  # Always overwrite in GUI mode
-        return True
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
