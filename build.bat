@@ -20,4 +20,4 @@ if exist main.spec (
 )
 
 REM Run PyInstaller with the necessary hidden imports
-pyinstaller --onefile --hidden-import=fitz --hidden-import=pymupdf --hidden-import=tabulate --hidden-import=argparse --hidden-import=pandas --hidden-import=os main.py
+pyinstaller --onefile --hidden-import=fitz --hidden-import=pymupdf --hidden-import=tabulate --hidden-import=argparse --hidden-import=pyqt5 --hidden-import=os main.py

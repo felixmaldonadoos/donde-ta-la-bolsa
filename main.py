@@ -106,9 +106,10 @@ class BolsaChecker(QWidget):
             result_str += f"{'Bolsa':<10}\t{'Cantidad':>10}\n"
             result_str += "-" * 30 + "\n"
             for k, v in sorted(occurrences_dict.items(), key=lambda x: int(x[0])):
-                dots = '.'*(10 - len(k))
-                result_str += f"{k}{dots}{v:>10}\n"
-
+                # dots = '.'*(10 - len(k))
+                line = f"{k:<10} {v:>10}\n".replace(" ", ".")
+                result_str += line
+                
         N = self.n_spinbox.value()
         vals_missing = self.vals_missing_from_list(num_list, N)
         result_str += f"\n\nBolsas no disponibles ({len(vals_missing)}/{N}):\n{vals_missing}"
