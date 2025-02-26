@@ -110,6 +110,8 @@ class BolsaChecker(QWidget):
                 line = f"{k:<10} {v:>10}\n".replace(" ", ".")
                 result_str += line
                 
+            
+
         N = self.n_spinbox.value()
         vals_missing = self.vals_missing_from_list(num_list, N)
         result_str += f"\n\nBolsas no disponibles ({len(vals_missing)}/{N}):\n{vals_missing}"
